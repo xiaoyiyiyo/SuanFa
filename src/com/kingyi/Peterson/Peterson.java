@@ -34,5 +34,5 @@ public class Peterson implements Runnable{
 	public static void main(String[] args) {
 		new Thread(new Peterson(0),"Thread-0").start();
 		new Thread(new Peterson(1),"Thread-1").start();
-	}
+	} 
 }
