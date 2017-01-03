@@ -5,20 +5,34 @@
   3.针对所有的元素重复以上的步骤，每趟比较的元素个数减1。
 代码：
 public static void bubbleSort(int a[]){
-		int count = a.length;
-		int temp;
-		for (int i = 1; i < a.length; i++) {
-			for (int j = 0; j < a.length - 1; j++) {
-				if(a[j] > a[j + 1]){
-					temp = a[j];
-					a[j] = a[j + 1];
-					a[j + 1] = temp;
-			}
-		}
-	}
+  int count = a.length;
+  int temp;
+  for (int i = 1; i < a.length; i++) {
+    for (int j = 0; j < a.length - 1; j++) {
+       if(a[j] > a[j + 1]){
+ 	 temp = a[j];
+	 a[j] = a[j + 1];
+	 a[j + 1] = temp;
+       }
+    }
+  }
 }
 平均时间复杂度：O(n2)   最好时间复杂度：O(n)   最坏时间复杂度： O(n2)
 注意：冒泡排序是稳定排序，故 判断需为 if(a[j] > a[j + 1])
 
 二. 插入排序
-原理
+原理： 每步将一个待排序的记录，按其顺序大小插入到前面已经排序的子序列的合适位置，直到全部插入排序完为止。(类比于打牌时整理手中的牌)
+代码：
+public static void insertSort(int a[]){
+  for(int i = 1; i < a.length; i++){
+    int j = i - 1;
+    int key = a[i];
+    while(j >= 0 && a[j] > key){
+      a[j + 1] = a[j];
+      --j;
+    }
+    a[j + 1] = key;
+  }
+}
+平均时间复杂度：O(n2)   最好时间复杂度：O(n)   最坏时间复杂度：O(n2) 
+注意：插入排序为稳定排序
