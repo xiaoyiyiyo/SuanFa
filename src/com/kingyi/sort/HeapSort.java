@@ -1,4 +1,4 @@
-package com.kingyi.heap_sort;
+package com.kingyi.sort;
 
 public class HeapSort {
 	public static void main(String[] args) {

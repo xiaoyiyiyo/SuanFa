@@ -1,4 +1,4 @@
-package com.kingyi.Merge_Sort;
+package com.kingyi.sort;
 
 import java.util.Arrays;
 

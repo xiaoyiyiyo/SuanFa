@@ -1,4 +1,4 @@
-package com.kingyi.Peterson;
+package com.kingyi.peterson;
 //www.xuebuyuan.com/2000074.html
 
 public class Peterson implements Runnable{

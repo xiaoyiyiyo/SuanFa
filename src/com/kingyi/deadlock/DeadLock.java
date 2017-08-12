@@ -1,4 +1,4 @@
-package com.kingyi.deadLock;
+package com.kingyi.deadlock;
 
 public class DeadLock {
     private static Object locka = new Object();

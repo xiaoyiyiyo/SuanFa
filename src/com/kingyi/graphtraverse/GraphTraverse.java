@@ -1,39 +1,39 @@
-package com.kingyi.Graph_Traverse;
+package com.kingyi.graphtraverse;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Graph_Traverse {
-	private ArrayList nodeList;		//´æ´¢½Úµã
-	private int[][] edges;			//´æ´¢±ß£¬È¨ÖØ
-	private int numOfEdges;			//±ßµÄ¸öÊý
-	private LinkedList queue;		//¸¨Öú¶ÓÁÐ
+public class GraphTraverse {
+	private ArrayList nodeList;		//ï¿½æ´¢ï¿½Úµï¿½
+	private int[][] edges;			//ï¿½æ´¢ï¿½ß£ï¿½È¨ï¿½ï¿½
+	private int numOfEdges;			//ï¿½ßµÄ¸ï¿½ï¿½ï¿½
+	private LinkedList queue;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	public Graph_Traverse(int n){
+	public GraphTraverse(int n){
 		nodeList = new ArrayList(n);
 		edges = new int[n][n];
 		numOfEdges = 0;
 		queue = new LinkedList();
 	}
 	
-	/*²åÈë½Úµã*/
+	/*ï¿½ï¿½ï¿½ï¿½Úµï¿½*/
 	public void insertNode(Object node){
 		nodeList.add(nodeList.size(), node);
 	}
 	
-	/*²åÈë±ß*/
+	/*ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	public void insertEdges(int n1,int n2, int weight){
 		edges[n1][n2] = weight;
 		++numOfEdges;
 	}
 	
-	/*É¾³ý±ß*/
+	/*É¾ï¿½ï¿½ï¿½ï¿½*/
 	public void deleteEdges(int n1,int n2){
 		edges[n1][n2] = 0;
 		--numOfEdges;
 	}
 	
-	/*µÃµ½µÚÒ»¸öÁÚ½Ó½Úµã*/
+	/*ï¿½Ãµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú½Ó½Úµï¿½*/
 	public int getFirstNeighbor(int n1){
 		for (int i = 0; i < nodeList.size(); i++) {
 			if(edges[n1][i] > 0){
@@ -43,7 +43,7 @@ public class Graph_Traverse {
 		return -1;
 	}
 	
-	/*µÃµ½ÏÂÒ»¸öÁÚ½Ó½Úµã*/
+	/*ï¿½Ãµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú½Ó½Úµï¿½*/
 	public int getNextNeighbor(int n1,int n2){
 		for (int i = n2+1; i < nodeList.size(); i++) {
 			if(edges[n1][i] > 0){
@@ -56,19 +56,19 @@ public class Graph_Traverse {
 	private void broadFirstSearch(boolean[] isVisited,int index){
 		int n,m;
 		
-		System.out.print(nodeList.get(index)+" "); //Êä³ö½ÚµãÐÅÏ¢£¬²¢¸ü¸Ä×´Ì¬
+		System.out.print(nodeList.get(index)+" "); //ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
 		isVisited[index] = true;
-		queue.addLast(index);						//½ÚµãÈë¶ÓÁÐ
-		while(!queue.isEmpty()){					//¶ÓÁÐÎª¿Õ£¬±íÊ¾¸Ã½ÚµãµÄÁÚ½Ó½ÚµãÈ«²¿±éÀúÍê
+		queue.addLast(index);						//ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		while(!queue.isEmpty()){					//ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½ï¿½ï¿½Ê¾ï¿½Ã½Úµï¿½ï¿½ï¿½Ú½Ó½Úµï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			n = (Integer)queue.removeFirst();
 			m = getFirstNeighbor(n);				
-			while(m != -1){							// =-1 ±íÊ¾Ã»ÓÐÁÚ½Ó½Úµã£¬Ðè´ÓÏÂÒ»¼¶±éÀúÁË
+			while(m != -1){							// =-1 ï¿½ï¿½Ê¾Ã»ï¿½ï¿½ï¿½Ú½Ó½Úµã£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				if(!isVisited[m]){
 					System.out.print(nodeList.get(m)+" ");
 					isVisited[m] = true;
 					queue.addLast(m);
 				}
-				m = getNextNeighbor(n, m);			//Ñ°ÕÒnµÄÏÂÒ»¸öÁÚ½Óµã
+				m = getNextNeighbor(n, m);			//Ñ°ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú½Óµï¿½
 			}
 		}
 	}
@@ -89,7 +89,7 @@ public class Graph_Traverse {
 	private void depthFirstSearch(boolean[] isVisited,int index){
 
         System.out.print(nodeList.get(index)+"  ");
-        //ÖÃ¸Ã½áµãÎªÒÑ·ÃÎÊ
+        //ï¿½Ã¸Ã½ï¿½ï¿½Îªï¿½Ñ·ï¿½ï¿½ï¿½
         isVisited[index]=true;
 
         int w=getFirstNeighbor(index);//
@@ -107,7 +107,7 @@ public class Graph_Traverse {
 			isVisited[i] = false;
 		}
 		for (int i = 0; i < nodeList.size(); i++) {
-			//¿¼ÂÇµ½·ÇÁ¬Í¨Í¼
+			//ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½Í¨Í¼
 			if(!isVisited[i]){
 				depthFirstSearch(isVisited, i);
 			}
@@ -116,11 +116,11 @@ public class Graph_Traverse {
 	}
 	
 	public static void main(String[] args) {
-		int n = 8, e = 9; // n ½Úµã¸öÊý e ±ßµÄÌõÊý
-		Graph_Traverse graph = new Graph_Traverse(n);
+		int n = 8, e = 9; // n ï¿½Úµï¿½ï¿½ï¿½ï¿½ e ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½
+		GraphTraverse graph = new GraphTraverse(n);
 		String labels[] = { "1", "2", "3", "4", "5", "6", "7", "8" };
 		for (String label : labels) {
-			graph.insertNode(label);// ²åÈë½áµã
+			graph.insertNode(label);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}
 		graph.insertEdges(0, 1, 1);
 		graph.insertEdges(0, 2, 1);
@@ -142,10 +142,10 @@ public class Graph_Traverse {
 		graph.insertEdges(6, 5, 1);
 
 		
-		System.out.println("¹ã¶ÈÓÅÏÈËÑË÷ÐòÁÐÎª£º");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½");
 		graph.broadFirstSearch();
 		System.out.println();
-		System.out.println("Éî¶ÈÓÅÏÈËÑË÷ÐòÁÐÎª£º");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½");
 		graph.depthFirstSearch();
 		
 	}

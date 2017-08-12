@@ -1,4 +1,4 @@
-package com.kingyi.quick_sort;
+package com.kingyi.sort;
 
 public class QuickSort {
 	public static void main(String[] args){
