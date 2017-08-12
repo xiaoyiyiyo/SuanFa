@@ -7,7 +7,7 @@ public class BubbleSort {
     public static void sort(int[] arr) {
         int count = arr.length;
         int temp = 0;
-//        System.out.println("need to sort : " + toPrintArrayByComma(arr));
+        System.out.println("need to sort : " + toPrintArrayByComma(arr));
         for (int i = 1; i < count; i++) {
             for (int j = 0; j < count - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -16,7 +16,7 @@ public class BubbleSort {
                     arr[j + 1] = temp;
                 }
             }
-//            System.out.println("after " + i + " sort : " + toPrintArrayByComma(arr));
+            System.out.println("after " + i + " sort : " + toPrintArrayByComma(arr));
         }
     }
 
